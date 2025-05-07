@@ -25,6 +25,9 @@ app.use(cors({
   credentials: true
 }));
 
+// ✅ Preflight CORS handling (important!)
+app.options('*', cors()); 
+
 // ✅ Middleware
 app.use(bodyParser.json());
 app.use(routes); // Your existing route handlers
