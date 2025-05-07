@@ -15,6 +15,7 @@ const allowedOrigins = [
 // ✅ CORS Middleware
 app.use(cors({
   origin: function (origin, callback) {
+    console.log("Origin:", origin);  // Log the origin
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -24,6 +25,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
+
 
 // ✅ Preflight CORS handling (important!)
 app.options('*', cors()); 
