@@ -23,7 +23,7 @@ export class StudentcrudComponent {
   }
 
   getAllStudent() {
-    this.http.get("https://client-tracker-api.onrender.com/user/getAll"
+    this.http.get("https://client-tracker-api.onrender.com/api/user/getAll"
 ).subscribe((resultData: any) => {
       console.log("Student data received:", resultData); // ADD THIS
       this.StudentArray = resultData;
@@ -38,14 +38,14 @@ export class StudentcrudComponent {
     };
 
     if (this.isEdit) {
-      this.http.put(`https://client-tracker-api.onrender.com/user/update/${this.currentStudentId}`, bodyData)
+      this.http.put(`https://client-tracker-api.onrender.com/api/user/update/${this.currentStudentId}`, bodyData)
         .subscribe(() => {
           alert("Client updated successfully");
           this.clearForm();
           this.getAllStudent();
         });
     } else {
-      this.http.post("https://client-tracker-api.onrender.com/user/create", bodyData)
+      this.http.post("https://client-tracker-api.onrender.com/api/user/create", bodyData)
         .subscribe(() => {
           alert("Client added successfully");
           this.clearForm();
@@ -64,7 +64,7 @@ export class StudentcrudComponent {
 
   deleteStudent(id: string) {
     if (confirm("Are you sure you want to delete this client?")) {
-      this.http.delete(`https://client-tracker-api.onrender.com/user/remove/${id}`)
+      this.http.delete(`https://client-tracker-api.onrender.com/api/user/remove/${id}`)
         .subscribe(() => {
           alert("Client deleted successfully");
           this.getAllStudent();
