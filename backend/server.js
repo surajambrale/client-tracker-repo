@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes'); // Assuming your existing routes are here
 
 const app = express();
+app.use('/api', routes); // Check if this line is correct
 
 // ✅ Allowed Origins
 const allowedOrigins = [
