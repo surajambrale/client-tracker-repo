@@ -29,7 +29,7 @@ app.use(cors({
 
 
 // ✅ Preflight CORS handling (important!)
-app.options('*', cors()); 
+// app.options('*', cors()); 
 
 // ✅ Middleware
 app.use(bodyParser.json());
