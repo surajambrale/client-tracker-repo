@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes'); // Assuming your existing routes are here
 
 const app = express();
-app.use('/api', routes); // Check if this line is correct
+// app.use('/api', routes); // Check if this line is correct
 
 // ✅ Allowed Origins
 const allowedOrigins = [
@@ -33,7 +33,7 @@ app.use(cors({
 
 // ✅ Middleware
 app.use(bodyParser.json());
-// app.use(routes); 
+app.use(routes); 
 
 // ✅ MongoDB connection
 mongoose.connect('mongodb+srv://surajambrale9003:surajambrale9003@cluster.3a07dkd.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster')
