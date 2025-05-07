@@ -33,7 +33,7 @@ app.options('*', cors());
 
 // ✅ Middleware
 app.use(bodyParser.json());
-app.use(routes); // Your existing route handlers
+// app.use(routes); 
 
 // ✅ MongoDB connection
 mongoose.connect('mongodb+srv://surajambrale9003:surajambrale9003@cluster.3a07dkd.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster')
