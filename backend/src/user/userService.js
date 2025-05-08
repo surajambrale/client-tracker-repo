@@ -16,7 +16,13 @@ module.exports.createUserDBService = async (userDetails) => {
         const userModelData = new userModel({
             name: userDetails.name,
             address: userDetails.address,
-            phone: userDetails.phone
+            phone: userDetails.phone,
+            trainingStartDate: userDetails.trainingStartDate,
+            trainingEndDate: userDetails.trainingEndDate,
+            trainingCost: userDetails.trainingCost,
+            paymentDone: userDetails.paymentDone,
+            balance: userDetails.balance,
+            notes: userDetails.notes
         });
 
         await userModelData.save();
@@ -30,7 +36,18 @@ module.exports.createUserDBService = async (userDetails) => {
 // PUT: Update existing user by ID
 module.exports.updateUserDBService = async (id, userDetails) => {
     try {
-        const result = await userModel.findByIdAndUpdate(id, userDetails, { new: true });
+        const result = await userModel.findByIdAndUpdate(id, {
+            name: userDetails.name,
+            address: userDetails.address,
+            phone: userDetails.phone,
+            trainingStartDate: userDetails.trainingStartDate,
+            trainingEndDate: userDetails.trainingEndDate,
+            trainingCost: userDetails.trainingCost,
+            paymentDone: userDetails.paymentDone,
+            balance: userDetails.balance,
+            notes: userDetails.notes
+        }, { new: true });
+
         return result;
     } catch (error) {
         throw error;
