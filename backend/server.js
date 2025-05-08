@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes'); // Assuming your existing routes are here
+const adminRoutes = require('./adminRoutes'); 
 
 const app = express();
 // app.use('/api', routes); // Check if this line is correct
@@ -33,6 +34,7 @@ app.use(cors({
 
 // ✅ Middleware
 app.use(bodyParser.json());
+app.use('/admin', adminRoutes);
 app.use(routes); 
 
 // ✅ MongoDB connection
