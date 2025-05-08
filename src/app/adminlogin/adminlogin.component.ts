@@ -24,7 +24,7 @@ export class AdminLoginComponent {
       .subscribe((res: any) => {
         if (res.success) {
           localStorage.setItem('isLoggedIn', 'true');
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/admin-dashboard']);
         } else {
           alert('Invalid credentials');
         }
