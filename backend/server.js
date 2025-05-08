@@ -40,6 +40,19 @@ mongoose.connect('mongodb+srv://surajambrale9003:surajambrale9003@cluster.3a07dk
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error("MongoDB connection error:", err));
 
+//admin start
+app.post('/admin/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (email === 'admin@gmail.com' && password === 'admin123') {
+    res.send({ success: true });
+  } else {
+    res.status(401).send({ success: false, message: 'Invalid credentials' });
+  }
+});
+
+//admin end
+
 // ✅ Start server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
