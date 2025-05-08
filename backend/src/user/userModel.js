@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    trainingCost: {
+        type: Number,
+        required: false
+    },
     paymentDone: {
         type: Number,
         required: true
@@ -31,9 +35,14 @@ const userSchema = new mongoose.Schema({
     balance: {
         type: Number,
         required: true
+    },
+    notes: {
+        type: String,
+        required: false,
+        trim: true
     }
 }, {
-    timestamps: true // Adds createdAt and updatedAt
+    timestamps: true
 });
 
 module.exports = mongoose.model('User', userSchema);

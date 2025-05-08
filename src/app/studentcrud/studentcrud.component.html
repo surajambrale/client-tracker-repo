@@ -31,6 +31,11 @@
           </div>
 
           <div class="mb-3">
+            <label class="form-label">Training Cost</label>
+            <input type="number" [(ngModel)]="trainingCost" name="trainingCost" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
             <label class="form-label">Payment Done</label>
             <input type="number" [(ngModel)]="paymentDone" name="paymentDone" class="form-control" required />
           </div>
@@ -38,6 +43,11 @@
           <div class="mb-3">
             <label class="form-label">Balance</label>
             <input type="number" [(ngModel)]="balance" name="balance" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Notes</label>
+            <textarea [(ngModel)]="notes" name="notes" class="form-control" rows="3"></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary w-100">
@@ -59,8 +69,10 @@
             <th>Phone</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th>Cost</th>
             <th>Paid</th>
             <th>Balance</th>
+            <th>Notes</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -71,8 +83,10 @@
             <td>{{ student.phone }}</td>
             <td>{{ student.trainingStartDate | date: 'yyyy-MM-dd' }}</td>
             <td>{{ student.trainingEndDate | date: 'yyyy-MM-dd' }}</td>
+            <td>₹{{ student.trainingCost }}</td>
             <td>₹{{ student.paymentDone }}</td>
             <td>₹{{ student.balance }}</td>
+            <td>{{ student.notes }}</td>
             <td>
               <button class="btn btn-sm btn-info me-2" (click)="editStudent(student)">Edit</button>
               <button class="btn btn-sm btn-danger" (click)="deleteStudent(student._id)">Delete</button>

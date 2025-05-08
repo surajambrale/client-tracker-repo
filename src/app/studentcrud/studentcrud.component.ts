@@ -17,8 +17,10 @@ export class StudentcrudComponent {
   phone: string = '';
   trainingStartDate: string = '';
   trainingEndDate: string = '';
+  trainingCost: number = 0;
   paymentDone: number = 0;
   balance: number = 0;
+  notes: string = '';
   isEdit: boolean = false;
   currentStudentId: string = '';
 
@@ -41,8 +43,10 @@ export class StudentcrudComponent {
       phone: this.phone,
       trainingStartDate: this.trainingStartDate,
       trainingEndDate: this.trainingEndDate,
+      trainingCost: this.trainingCost,
       paymentDone: this.paymentDone,
-      balance: this.balance
+      balance: this.balance,
+      notes: this.notes
     };
 
     if (this.isEdit) {
@@ -68,8 +72,10 @@ export class StudentcrudComponent {
     this.phone = student.phone;
     this.trainingStartDate = student.trainingStartDate;
     this.trainingEndDate = student.trainingEndDate;
+    this.trainingCost = student.trainingCost;
     this.paymentDone = student.paymentDone;
     this.balance = student.balance;
+    this.notes = student.notes;
     this.currentStudentId = student._id;
     this.isEdit = true;
   }
@@ -90,8 +96,10 @@ export class StudentcrudComponent {
     this.phone = '';
     this.trainingStartDate = '';
     this.trainingEndDate = '';
+    this.trainingCost = 0;
     this.paymentDone = 0;
     this.balance = 0;
+    this.notes = '';
     this.isEdit = false;
     this.currentStudentId = '';
   }

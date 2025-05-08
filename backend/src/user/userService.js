@@ -19,8 +19,10 @@ module.exports.createUserDBService = async (userDetails) => {
             phone: userDetails.phone,
             trainingStartDate: userDetails.trainingStartDate,
             trainingEndDate: userDetails.trainingEndDate,
+            trainingCost: userDetails.trainingCost,
             paymentDone: userDetails.paymentDone,
-            balance: userDetails.balance
+            balance: userDetails.balance,
+            notes: userDetails.notes
         });
 
         await userModelData.save();
@@ -40,8 +42,10 @@ module.exports.updateUserDBService = async (id, userDetails) => {
             phone: userDetails.phone,
             trainingStartDate: userDetails.trainingStartDate,
             trainingEndDate: userDetails.trainingEndDate,
+            trainingCost: userDetails.trainingCost,
             paymentDone: userDetails.paymentDone,
-            balance: userDetails.balance
+            balance: userDetails.balance,
+            notes: userDetails.notes
         }, { new: true });
 
         return result;
