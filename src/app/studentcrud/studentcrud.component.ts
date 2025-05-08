@@ -15,6 +15,10 @@ export class StudentcrudComponent {
   name: string = '';
   address: string = '';
   phone: string = '';
+  trainingStartDate: string = '';
+  trainingEndDate: string = '';
+  paymentDone: number = 0;
+  balance: number = 0;
   isEdit: boolean = false;
   currentStudentId: string = '';
 
@@ -23,11 +27,11 @@ export class StudentcrudComponent {
   }
 
   getAllStudent() {
-    this.http.get("https://client-tracker-repo.onrender.com/user/getAll"
-).subscribe((resultData: any) => {
-      console.log("Student data received:", resultData); // ADD THIS
-      this.StudentArray = resultData;
-    });
+    this.http.get("https://client-tracker-repo.onrender.com/user/getAll")
+      .subscribe((resultData: any) => {
+        console.log("Student data received:", resultData);
+        this.StudentArray = resultData;
+      });
   }
 
   register() {
@@ -35,6 +39,10 @@ export class StudentcrudComponent {
       name: this.name,
       address: this.address,
       phone: this.phone,
+      trainingStartDate: this.trainingStartDate,
+      trainingEndDate: this.trainingEndDate,
+      paymentDone: this.paymentDone,
+      balance: this.balance
     };
 
     if (this.isEdit) {
@@ -58,6 +66,10 @@ export class StudentcrudComponent {
     this.name = student.name;
     this.address = student.address;
     this.phone = student.phone;
+    this.trainingStartDate = student.trainingStartDate;
+    this.trainingEndDate = student.trainingEndDate;
+    this.paymentDone = student.paymentDone;
+    this.balance = student.balance;
     this.currentStudentId = student._id;
     this.isEdit = true;
   }
@@ -76,6 +88,10 @@ export class StudentcrudComponent {
     this.name = '';
     this.address = '';
     this.phone = '';
+    this.trainingStartDate = '';
+    this.trainingEndDate = '';
+    this.paymentDone = 0;
+    this.balance = 0;
     this.isEdit = false;
     this.currentStudentId = '';
   }
