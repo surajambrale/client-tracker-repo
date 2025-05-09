@@ -44,7 +44,7 @@ mongoose.connect('mongodb+srv://surajambrale9003:surajambrale9003@cluster.3a07dk
 app.post('/admin/login', (req, res) => {
   const { email, password } = req.body;
 
-  if (email === 'admin@gmail.com' && password === 'admin123') {
+  if (email === 'admin123' && password === 'admin123') {
     res.send({ success: true });
   } else {
     res.status(401).send({ success: false, message: 'Invalid credentials' });
