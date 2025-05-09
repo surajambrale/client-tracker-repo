@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-studentcrud',
@@ -24,7 +25,7 @@ export class StudentcrudComponent {
   isEdit: boolean = false;
   currentStudentId: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.getAllStudent();
   }
 
@@ -103,4 +104,11 @@ export class StudentcrudComponent {
     this.isEdit = false;
     this.currentStudentId = '';
   }
+  
+  logout() {
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/admin-login']);
+  }
+  
+
 }
