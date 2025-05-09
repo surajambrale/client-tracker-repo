@@ -7,10 +7,17 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (!isLoggedIn) {
-      this.router.navigate(['/admin-login']);
-      return false;
-    }
+    const expiry = Number(localStorage.getItem('expiry'));
+
+    //ye line hata do normal ho jayega, timer hat jayega
+  const now = new Date().getTime();
+  //ye line hata do normal ho jayega, timer hat jayega
+    if (!isLoggedIn || !expiry || now > expiry) {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('expiry');
+    this.router.navigate(['/admin-login']);
+    return false;
+  }
     return true;
   }
 }

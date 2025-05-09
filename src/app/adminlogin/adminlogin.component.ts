@@ -23,7 +23,16 @@ export class AdminLoginComponent {
     this.http.post('https://client-tracker-repo.onrender.com/admin/login', body)
       .subscribe((res: any) => {
         if (res.success) {
+          //logout after 10 minutes logic starts here
+         const now = new Date().getTime();
+         const expiry = now + 1 * 60 * 1000; 
+          //logout after 10 minutes logic starts here
           localStorage.setItem('isLoggedIn', 'true');
+
+          //timer ki line he
+          localStorage.setItem('expiry', expiry.toString());
+          //timer ki line he
+          
           this.router.navigate(['/dashboard']);
         } else {
           alert('Invalid credentials');
