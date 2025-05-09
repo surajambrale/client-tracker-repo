@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-image: url('/assets/images/admin.jpg'); // <-- adjust path if needed
+//   background-color: rgb(11, 11, 11);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.card p-4 shadow{
+     box-shadow: 0 0 20px rgba(250, 248, 248, 0.7);
+}

@@ -25,6 +25,11 @@ export class StudentcrudComponent {
   isEdit: boolean = false;
   currentStudentId: string = '';
 
+  // Totals
+  totalCost: number = 0;
+  totalPaid: number = 0;
+  totalBalance: number = 0;
+
   constructor(private http: HttpClient, private router: Router) {
     this.getAllStudent();
   }
@@ -32,8 +37,12 @@ export class StudentcrudComponent {
   getAllStudent() {
     this.http.get("https://client-tracker-repo.onrender.com/user/getAll")
       .subscribe((resultData: any) => {
-        console.log("Student data received:", resultData);
         this.StudentArray = resultData;
+
+        // Calculate totals
+        this.totalCost = this.StudentArray.reduce((sum, s) => sum + Number(s.trainingCost || 0), 0);
+        this.totalPaid = this.StudentArray.reduce((sum, s) => sum + Number(s.paymentDone || 0), 0);
+        this.totalBalance = this.StudentArray.reduce((sum, s) => sum + Number(s.balance || 0), 0);
       });
   }
 
@@ -104,11 +113,9 @@ export class StudentcrudComponent {
     this.isEdit = false;
     this.currentStudentId = '';
   }
-  
+
   logout() {
     localStorage.removeItem('isLoggedIn');
     this.router.navigate(['/admin-login']);
   }
-  
-
 }
